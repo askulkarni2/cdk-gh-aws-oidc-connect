@@ -35,7 +35,8 @@ export class GitHubActionsAwsOidcConnect extends cdk.Construct {
     // Create an OIDC Provider for GitHub Actions
     const githubOidcProvider = new iam.OpenIdConnectProvider(scope, 'github-oidc-provider', {
       url: 'https://vstoken.actions.githubusercontent.com',
-      clientIds: repos.map((repo) => { return `https://github.com/${repo}`; }),
+      //clientIds: repos.map((repo) => { return `https://github.com/${repo}`; }),
+      clientIds: ['sigstore'],
     });
 
     // Create an IAM role with policies provided.

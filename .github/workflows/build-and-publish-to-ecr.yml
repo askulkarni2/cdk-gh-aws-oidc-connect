@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - main
+permissions:
+  id-token: write
+  contents: write
 jobs:
   deploy:
     name: Publish to ECR
@@ -15,7 +18,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Configure AWS credentials from Test account
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@b8c74de
       with:
         role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
         aws-region: us-west-2
