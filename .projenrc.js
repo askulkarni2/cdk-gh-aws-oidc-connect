@@ -1,4 +1,7 @@
-const { AwsCdkConstructLibrary } = require('projen');
+const { AwsCdkConstructLibrary, DependenciesUpgradeMechanism, DevEnvironmentDockerImage, Gitpod } = require('projen');
+
+const AUTOMATION_TOKEN = 'GITHUB_TOKEN';
+
 const project = new AwsCdkConstructLibrary({
   author: 'Apoorva Kulkarni',
   authorAddress: 'kuapoorv@amazon.com',
@@ -25,5 +28,15 @@ for details.`,
   ],
   codeCov: true,
   docgen: true,
+  depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+    workflowOptions: {
+      labels: ['auto-approve'],
+      secret: AUTOMATION_TOKEN,
+    },
+  }),
+  autoApproveOptions: {
+    secret: 'GITHUB_TOKEN',
+    allowedUsernames: ['askulkarni2'],
+  },
 });
 project.synth();
