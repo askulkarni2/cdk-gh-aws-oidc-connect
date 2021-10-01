@@ -1,5 +1,6 @@
 {
   "name": "cdk-gh-aws-oidc-connect",
+  "description": "\nThis construct is based on Aidan Steele's blog https://awsteele.com/blog/2021/09/15/aws-federation-comes-to-github-actions.html. Use this constuct to provision an AWS IAM OIDC identity provider and an IAM role that can be assumed by github-actions. See https://github.com/github/roadmap/issues/249 for details.",
   "repository": {
     "type": "git",
     "url": "https://github.com/kuapoorv/cdk-gh-aws-oidc-connect.git"
@@ -33,7 +34,10 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.95.2",
+    "@aws-cdk/assert": "^1.125.0",
+    "@aws-cdk/aws-ecr": "^1.125.0",
+    "@aws-cdk/aws-iam": "^1.125.0",
+    "@aws-cdk/core": "^1.125.0",
     "@types/jest": "^27.0.2",
     "@types/node": "^14.17.0",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
@@ -56,7 +60,13 @@
     "typescript": "^4.4.3"
   },
   "peerDependencies": {
+    "@aws-cdk/aws-iam": "^1.125.0",
+    "@aws-cdk/core": "^1.125.0",
     "constructs": "^3.2.27"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-iam": "^1.125.0",
+    "@aws-cdk/core": "^1.125.0"
   },
   "bundledDependencies": [],
   "keywords": [
