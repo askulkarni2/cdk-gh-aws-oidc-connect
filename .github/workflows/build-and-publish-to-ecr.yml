@@ -2,6 +2,9 @@ name: integration-test
 on:
   pull_request: {}
   workflow_dispatch: {}
+  push:
+    branches:
+      - main
 jobs:
   deploy:
     name: Publish to ECR
