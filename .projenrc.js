@@ -38,4 +38,5 @@ for details.`,
   devContainer: true,
   gitpod: true,
 });
+project.addGitIgnore('cdk.out');
 project.synth();
