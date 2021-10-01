@@ -1,0 +1,340 @@
+{
+  "version": "14.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "GitHubOidcStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "GitHubOidcStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "GitHubOidcStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "GitHubOidcStack.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fbd84290b91b8a54c914e9f7026d9552e524d94d3e9397bf968f4c4f4ee3219f.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "GitHubOidcStack.assets"
+        ]
+      },
+      "dependencies": [
+        "GitHubOidcStack.assets"
+      ],
+      "metadata": {
+        "/GitHubOidcStack/github-oidc-provider/Resource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "githuboidcprovider510B14A8",
+            "trace": [
+              "new CustomResource (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/custom-resource.ts:36:21)",
+              "new OpenIdConnectProvider (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-iam/lib/oidc-provider.ts:59:22)",
+              "new GitHubActionsAwsOidcConnect (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/index.ts:36:32)",
+              "Object.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/bin/main.ts:12:22)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Module.m._compile (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "main (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/GitHubOidcStack/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65",
+            "trace": [
+              "new CustomResourceProvider (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:113:18)",
+              "Function.getOrCreateProvider (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:69:10)",
+              "Function.getOrCreate (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:61:17)",
+              "OpenIdConnectProvider.getOrCreateProvider (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-iam/lib/oidc-provider.ts:74:35)",
+              "new OpenIdConnectProvider (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-iam/lib/oidc-provider.ts:61:26)",
+              "new GitHubActionsAwsOidcConnect (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/index.ts:36:32)",
+              "Object.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/bin/main.ts:12:22)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Module.m._compile (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "main (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/GitHubOidcStack/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderHandlerF2C543E0",
+            "trace": [
+              "new CustomResourceProvider (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:131:21)",
+              "Function.getOrCreateProvider (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:69:10)",
+              "Function.getOrCreate (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:61:17)",
+              "OpenIdConnectProvider.getOrCreateProvider (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-iam/lib/oidc-provider.ts:74:35)",
+              "new OpenIdConnectProvider (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-iam/lib/oidc-provider.ts:61:26)",
+              "new GitHubActionsAwsOidcConnect (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/index.ts:36:32)",
+              "Object.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/bin/main.ts:12:22)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Module.m._compile (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "main (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/GitHubOidcStack/iam-role-to-assume/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "iamroletoassume09F64513",
+            "trace": [
+              "new Role (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-iam/lib/role.ts:199:18)",
+              "new GitHubActionsAwsOidcConnect (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/index.ts:42:25)",
+              "Object.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/bin/main.ts:12:22)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Module.m._compile (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "main (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/GitHubOidcStack/iam-role-to-assume/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "iamroletoassumeDefaultPolicyA1C20718",
+            "trace": [
+              "new Policy (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-iam/lib/policy.ts:89:22)",
+              "Role.addToPrincipalPolicy (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-iam/lib/role.ts:236:28)",
+              "Function.addToPrincipal (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-iam/lib/grant.ts:92:61)",
+              "Function.addToPrincipalOrResource (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-iam/lib/grant.ts:48:26)",
+              "Repository.grant (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-ecr/lib/repository.ts:146:22)",
+              "Repository.grantPull (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-ecr/lib/repository.ts:157:22)",
+              "Repository.grantPullPush (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-ecr/lib/repository.ts:171:10)",
+              "Object.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/bin/main.ts:20:9)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Module.m._compile (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "main (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/GitHubOidcStack/EcrRepo/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcrRepoBB83A592",
+            "trace": [
+              "new Repository (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/aws-ecr/lib/repository.ts:320:22)",
+              "Object.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/bin/main.ts:17:17)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Module.m._compile (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "main (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/GitHubOidcStack/ecr-repo": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ecrrepo",
+            "trace": [
+              "Object.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/bin/main.ts:22:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Module.m._compile (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "main (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/GitHubOidcStack/role-to-assume": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "roletoassume",
+            "trace": [
+              "Object.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/src/bin/main.ts:26:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Module.m._compile (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "main (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1085:14)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)",
+              "Module.load (internal/modules/cjs/loader.js:950:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:790:12)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/GitHubOidcStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+              "/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:166:5",
+              "visit (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "injectMetadataResources (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:3)",
+              "Object.synthesize (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+              "process.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/app.ts:64:45)",
+              "Object.onceWrapper (events.js:520:26)",
+              "process.emit (events.js:400:28)",
+              "process.emit (domain.js:475:12)",
+              "process.emit (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ],
+        "/GitHubOidcStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable",
+            "trace": [
+              "new MetadataResource (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:31:27)",
+              "/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:166:5",
+              "visit (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "injectMetadataResources (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:3)",
+              "Object.synthesize (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+              "process.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/app.ts:64:45)",
+              "Object.onceWrapper (events.js:520:26)",
+              "process.emit (events.js:400:28)",
+              "process.emit (domain.js:475:12)",
+              "process.emit (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ],
+        "/GitHubOidcStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion",
+            "trace": [
+              "addBootstrapVersionRule (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.ts:451:17)",
+              "DefaultStackSynthesizer.synthesize (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.ts:277:7)",
+              "/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:184:29",
+              "visit (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "synthesizeTree (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:176:3)",
+              "Object.synthesize (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:39:3)",
+              "App.synth (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+              "process.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/app.ts:64:45)",
+              "Object.onceWrapper (events.js:520:26)",
+              "process.emit (events.js:400:28)",
+              "process.emit (domain.js:475:12)",
+              "process.emit (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ],
+        "/GitHubOidcStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion",
+            "trace": [
+              "addBootstrapVersionRule (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.ts:461:3)",
+              "DefaultStackSynthesizer.synthesize (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.ts:277:7)",
+              "/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:184:29",
+              "visit (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "synthesizeTree (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:176:3)",
+              "Object.synthesize (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/private/synthesis.ts:39:3)",
+              "App.synth (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+              "process.<anonymous> (/Users/kuapoorv/projects/constructs/cdk-gh-aws-oidc-connect/node_modules/@aws-cdk/core/lib/app.ts:64:45)",
+              "Object.onceWrapper (events.js:520:26)",
+              "process.emit (events.js:400:28)",
+              "process.emit (domain.js:475:12)",
+              "process.emit (/Users/kuapoorv/.npm/_npx/1bf7c3c15bf47d04/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ]
+      },
+      "displayName": "GitHubOidcStack"
+    }
+  }
+}

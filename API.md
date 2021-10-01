@@ -76,17 +76,12 @@ E.g. ['aidansteele/aws-federation-github-actions']
 ##### `managedPolicies`<sup>Optional</sup> <a name="cdk-gh-aws-oidc-connect.GitHubActionsAwsOidcConnectProps.property.managedPolicies"></a>
 
 ```typescript
-public readonly managedPolicies: ManagedPolicy[];
+public readonly managedPolicies: IManagedPolicy[];
 ```
 
-- *Type:* [`@aws-cdk/aws-iam.ManagedPolicy`](#@aws-cdk/aws-iam.ManagedPolicy)[]
-- *Default:* 'ReadOnlyAccess'
+- *Type:* [`@aws-cdk/aws-iam.IManagedPolicy`](#@aws-cdk/aws-iam.IManagedPolicy)[]
 
 A list of Managed IAM policies.
-
-If neither IAM policies
-or managed policies are provided, ReadOnlyAccess AWS
-managed policy will be used by default.
 
 ---
 

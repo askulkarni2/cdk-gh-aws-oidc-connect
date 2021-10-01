@@ -1,4 +1,4 @@
-const { AwsCdkConstructLibrary, DependenciesUpgradeMechanism, DevEnvironmentDockerImage, Gitpod } = require('projen');
+const { AwsCdkConstructLibrary, DependenciesUpgradeMechanism, DevEnvironmentDockerImage, Gitpod, github } = require('projen');
 
 const AUTOMATION_TOKEN = 'GITHUB_TOKEN';
 
@@ -12,6 +12,7 @@ const project = new AwsCdkConstructLibrary({
   cdkDependencies: [
     '@aws-cdk/core',
     '@aws-cdk/aws-iam',
+    '@aws-cdk/aws-ecr',
   ],
   cdkTestDependencies: [
     '@aws-cdk/aws-ecr',
@@ -22,10 +23,6 @@ https://awsteele.com/blog/2021/09/15/aws-federation-comes-to-github-actions.html
 Use this constuct to provision an AWS IAM OIDC identity provider and an IAM role \
 that can be assumed by github-actions. See https://github.com/github/roadmap/issues/249 \
 for details.`,
-  devDeps: [
-    '@aws-cdk/core',
-    '@aws-cdk/aws-iam',
-  ],
   codeCov: true,
   docgen: true,
   depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
@@ -38,5 +35,7 @@ for details.`,
     secret: 'GITHUB_TOKEN',
     allowedUsernames: ['askulkarni2'],
   },
+  devContainer: true,
+  gitpod: true,
 });
 project.synth();
