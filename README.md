@@ -56,6 +56,16 @@ GitHubOidcStack.roletoassume = arn:aws:iam::XXXXXXXXX:role/GitHubOidcStack-iamro
 Create an action such as...
 
 ```yaml
+name: integration-test
+on:
+  pull_request: {}
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+permissions:
+  id-token: write
+  contents: write
 jobs:
   deploy:
     name: Publish to ECR
@@ -66,7 +76,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Configure AWS credentials from Test account
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af
       with:
         role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
         aws-region: us-west-2
