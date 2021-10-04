@@ -3,10 +3,10 @@ import * as cdk from '@aws-cdk/core';
 
 export interface GitHubActionsAwsOidcConnectProps {
   /**
-   * List of GitHub repositories which will assume the IAM role.
-   * E.g. ['aidansteele/aws-federation-github-actions']
+   * GitHub repository which will assume the IAM role.
+   * E.g. aidansteele/aws-federation-github-actions
    */
-  readonly repos: Array<string>;
+  readonly repo: string;
 
   /**
    * A list of IAM policies.
@@ -29,7 +29,7 @@ export class GitHubActionsAwsOidcConnect extends cdk.Construct {
   constructor(scope: cdk.Construct, id: string, props: GitHubActionsAwsOidcConnectProps) {
     super(scope, id);
 
-    const repos = props.repos;
+    const repo = props.repo;
     // TODO: validate repos
 
     // Create an OIDC Provider for GitHub Actions
@@ -45,9 +45,7 @@ export class GitHubActionsAwsOidcConnect extends cdk.Construct {
       managedPolicies: props.managedPolicies,
       assumedBy: new iam.OpenIdConnectPrincipal(githubOidcProvider, {
         'ForAnyValue:StringEquals': {
-          'vstoken.actions.githubusercontent.com:sub': repos.map((repo) => {
-            return `repo:${repo}:*`;
-          }),
+          'vstoken.actions.githubusercontent.com:sub': repo,
         },
       }),
     });
