@@ -10,7 +10,7 @@ const stack = new cdk.Stack(app, 'GitHubOidcStack');
 
 // Create OIDC Connect Provider
 const oidcProvider = new GitHubActionsAwsOidcConnect(stack, 'GitHubOidcConnect', {
-  repos: ['askulkarni2/cdk-gh-aws-oidc-connect'],
+  repo: 'askulkarni2/cdk-gh-aws-oidc-connect',
 });
 
 // Create an ECR Repo
