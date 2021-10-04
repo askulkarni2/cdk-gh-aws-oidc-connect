@@ -59,17 +59,17 @@ import { GitHubActionsAwsOidcConnectProps } from 'cdk-gh-aws-oidc-connect'
 const gitHubActionsAwsOidcConnectProps: GitHubActionsAwsOidcConnectProps = { ... }
 ```
 
-##### `repos`<sup>Required</sup> <a name="cdk-gh-aws-oidc-connect.GitHubActionsAwsOidcConnectProps.property.repos"></a>
+##### `repo`<sup>Required</sup> <a name="cdk-gh-aws-oidc-connect.GitHubActionsAwsOidcConnectProps.property.repo"></a>
 
 ```typescript
-public readonly repos: string[];
+public readonly repo: string;
 ```
 
-- *Type:* `string`[]
+- *Type:* `string`
 
-List of GitHub repositories which will assume the IAM role.
+GitHub repository which will assume the IAM role.
 
-E.g. ['aidansteele/aws-federation-github-actions']
+E.g. aidansteele/aws-federation-github-actions
 
 ---
 

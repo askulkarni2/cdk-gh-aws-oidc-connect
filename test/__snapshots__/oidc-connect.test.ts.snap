@@ -128,6 +128,9 @@ Object {
             "Arn",
           ],
         },
+        "ThumbprintList": Array [
+          "a031c46782e6e6c662c2c87c76da9aa62ccabd8e",
+        ],
         "Url": "https://vstoken.actions.githubusercontent.com",
       },
       "Type": "Custom::AWSCDKOpenIdConnectProvider",
@@ -141,9 +144,7 @@ Object {
               "Action": "sts:AssumeRoleWithWebIdentity",
               "Condition": Object {
                 "ForAnyValue:StringEquals": Object {
-                  "vstoken.actions.githubusercontent.com:sub": Array [
-                    "repo:askulkarni2/cdk-gh-aws-oidc-connect:*",
-                  ],
+                  "vstoken.actions.githubusercontent.com:sub": "askulkarni2/cdk-gh-aws-oidc-connect",
                 },
               },
               "Effect": "Allow",
@@ -291,6 +292,9 @@ Object {
             "Arn",
           ],
         },
+        "ThumbprintList": Array [
+          "a031c46782e6e6c662c2c87c76da9aa62ccabd8e",
+        ],
         "Url": "https://vstoken.actions.githubusercontent.com",
       },
       "Type": "Custom::AWSCDKOpenIdConnectProvider",
@@ -304,9 +308,7 @@ Object {
               "Action": "sts:AssumeRoleWithWebIdentity",
               "Condition": Object {
                 "ForAnyValue:StringEquals": Object {
-                  "vstoken.actions.githubusercontent.com:sub": Array [
-                    "repo:askulkarni2/cdk-gh-aws-oidc-connect:*",
-                  ],
+                  "vstoken.actions.githubusercontent.com:sub": "askulkarni2/cdk-gh-aws-oidc-connect",
                 },
               },
               "Effect": "Allow",
@@ -468,6 +470,9 @@ Object {
             "Arn",
           ],
         },
+        "ThumbprintList": Array [
+          "a031c46782e6e6c662c2c87c76da9aa62ccabd8e",
+        ],
         "Url": "https://vstoken.actions.githubusercontent.com",
       },
       "Type": "Custom::AWSCDKOpenIdConnectProvider",
@@ -481,9 +486,7 @@ Object {
               "Action": "sts:AssumeRoleWithWebIdentity",
               "Condition": Object {
                 "ForAnyValue:StringEquals": Object {
-                  "vstoken.actions.githubusercontent.com:sub": Array [
-                    "repo:askulkarni2/cdk-gh-aws-oidc-connect:*",
-                  ],
+                  "vstoken.actions.githubusercontent.com:sub": "askulkarni2/cdk-gh-aws-oidc-connect",
                 },
               },
               "Effect": "Allow",
@@ -631,6 +634,9 @@ Object {
             "Arn",
           ],
         },
+        "ThumbprintList": Array [
+          "a031c46782e6e6c662c2c87c76da9aa62ccabd8e",
+        ],
         "Url": "https://vstoken.actions.githubusercontent.com",
       },
       "Type": "Custom::AWSCDKOpenIdConnectProvider",
@@ -644,9 +650,7 @@ Object {
               "Action": "sts:AssumeRoleWithWebIdentity",
               "Condition": Object {
                 "ForAnyValue:StringEquals": Object {
-                  "vstoken.actions.githubusercontent.com:sub": Array [
-                    "repo:askulkarni2/cdk-gh-aws-oidc-connect:*",
-                  ],
+                  "vstoken.actions.githubusercontent.com:sub": "askulkarni2/cdk-gh-aws-oidc-connect",
                 },
               },
               "Effect": "Allow",
