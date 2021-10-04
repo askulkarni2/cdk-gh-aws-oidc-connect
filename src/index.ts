@@ -37,6 +37,7 @@ export class GitHubActionsAwsOidcConnect extends cdk.Construct {
       url: 'https://vstoken.actions.githubusercontent.com',
       //clientIds: repos.map((repo) => { return `https://github.com/${repo}`; }),
       clientIds: ['sigstore'],
+      thumbprints: ['a031c46782e6e6c662c2c87c76da9aa62ccabd8e'],
     });
 
     // Create an IAM role with policies provided.
