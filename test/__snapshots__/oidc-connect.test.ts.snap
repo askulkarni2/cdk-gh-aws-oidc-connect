@@ -120,7 +120,7 @@ Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "ClientIDList": Array [
-          "https://github.com/askulkarni2/cdk-gh-aws-oidc-connect",
+          "sigstore",
         ],
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
@@ -283,7 +283,7 @@ Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "ClientIDList": Array [
-          "https://github.com/askulkarni2/cdk-gh-aws-oidc-connect",
+          "sigstore",
         ],
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
@@ -460,7 +460,7 @@ Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "ClientIDList": Array [
-          "https://github.com/askulkarni2/cdk-gh-aws-oidc-connect",
+          "sigstore",
         ],
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
@@ -623,7 +623,7 @@ Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "ClientIDList": Array [
-          "https://github.com/askulkarni2/cdk-gh-aws-oidc-connect",
+          "sigstore",
         ],
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
