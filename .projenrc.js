@@ -21,13 +21,12 @@ const project = new AwsCdkConstructLibrary({
 This construct is based on Aidan Steele\'s blog \
 https://awsteele.com/blog/2021/09/15/aws-federation-comes-to-github-actions.html. \
 Use this constuct to provision an AWS IAM OIDC identity provider and an IAM role \
-that can be assumed by github-actions. See https://github.com/github/roadmap/issues/249 \
-for details.`,
+that can be assumed by github-actions.`,
   codeCov: true,
   docgen: true,
   depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
     workflowOptions: {
-      labels: ['auto-approve'],
+      labels: ['auto-approve', 'auto_merge'],
       secret: AUTOMATION_TOKEN,
     },
   }),
@@ -37,6 +36,12 @@ for details.`,
   },
   devContainer: true,
   gitpod: true,
+  autoApproveUpgrades: true,
+  autoApproveProjenUpgrades: true,
+  python: {
+    distName: 'cdk-gh-aws-oidc-connect',
+    module: 'cdk_gh_aws_oidc_connect',
+  },
 });
 project.addGitIgnore('cdk.out');
 project.synth();
