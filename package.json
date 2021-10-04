@@ -1,9 +1,9 @@
 {
   "name": "cdk-gh-aws-oidc-connect",
-  "description": "\nThis construct is based on Aidan Steele's blog https://awsteele.com/blog/2021/09/15/aws-federation-comes-to-github-actions.html. Use this constuct to provision an AWS IAM OIDC identity provider and an IAM role that can be assumed by github-actions. See https://github.com/github/roadmap/issues/249 for details.",
+  "description": "\nThis construct is based on Aidan Steele's blog https://awsteele.com/blog/2021/09/15/aws-federation-comes-to-github-actions.html. Use this constuct to provision an AWS IAM OIDC identity provider and an IAM role that can be assumed by github-actions.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kuapoorv/cdk-gh-aws-oidc-connect.git"
+    "url": "https://github.com/askulkarni2/cdk-gh-aws-oidc-connect.git"
   },
   "scripts": {
     "clobber": "npx projen clobber",
@@ -30,7 +30,7 @@
   },
   "author": {
     "name": "Apoorva Kulkarni",
-    "email": "kuapoorv@amazon.com",
+    "email": "askulkarni2@gmail.com",
     "organization": false
   },
   "devDependencies": {
@@ -52,7 +52,7 @@
     "jsii-pacmak": "^1.35.0",
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
-    "projen": "^0.28.33",
+    "projen": "^0.28.35",
     "standard-version": "^9",
     "ts-jest": "^27.0.5",
     "typescript": "^4.4.3"

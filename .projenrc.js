@@ -4,11 +4,11 @@ const AUTOMATION_TOKEN = 'GITHUB_TOKEN';
 
 const project = new AwsCdkConstructLibrary({
   author: 'Apoorva Kulkarni',
-  authorAddress: 'kuapoorv@amazon.com',
+  authorAddress: 'askulkarni2@gmail.com',
   cdkVersion: '1.125.0',
   defaultReleaseBranch: 'main',
   name: 'cdk-gh-aws-oidc-connect',
-  repositoryUrl: 'https://github.com/kuapoorv/cdk-gh-aws-oidc-connect.git',
+  repositoryUrl: 'https://github.com/askulkarni2/cdk-gh-aws-oidc-connect.git',
   cdkDependencies: [
     '@aws-cdk/core',
     '@aws-cdk/aws-iam',
@@ -24,24 +24,25 @@ Use this constuct to provision an AWS IAM OIDC identity provider and an IAM role
 that can be assumed by github-actions.`,
   codeCov: true,
   docgen: true,
-  depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+  depsUpgrade: {
+    ignoreProjen: false,
     workflowOptions: {
-      labels: ['auto-approve', 'auto_merge'],
+      labels: ['auto-approve', 'auto-merge'],
       secret: AUTOMATION_TOKEN,
     },
-  }),
+  },
+  autoDetectBin: false,
   autoApproveOptions: {
     secret: 'GITHUB_TOKEN',
     allowedUsernames: ['askulkarni2'],
   },
-  devContainer: true,
-  gitpod: true,
   autoApproveUpgrades: true,
   autoApproveProjenUpgrades: true,
-  python: {
+  releaseToNpm: true,
+  /*python: {
     distName: 'cdk-gh-aws-oidc-connect',
     module: 'cdk_gh_aws_oidc_connect',
-  },
+  },*/
 });
 project.addGitIgnore('cdk.out');
 project.synth();
