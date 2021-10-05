@@ -1,4 +1,4 @@
-const { AwsCdkConstructLibrary, DependenciesUpgradeMechanism, DevEnvironmentDockerImage, Gitpod, github } = require('projen');
+const { AwsCdkConstructLibrary } = require('projen');
 
 const AUTOMATION_TOKEN = 'GITHUB_TOKEN';
 
@@ -39,10 +39,12 @@ that can be assumed by github-actions.`,
   autoApproveUpgrades: true,
   autoApproveProjenUpgrades: true,
   releaseToNpm: true,
-  /*python: {
-    distName: 'cdk-gh-aws-oidc-connect',
-    module: 'cdk_gh_aws_oidc_connect',
-  },*/
+  pullRequestTemplateContents: [
+    '',
+    '----',
+    '',
+    '*By submitting this pull request, I confirm that my contribution is made under the terms of the Apache-2.0 license*',
+  ],
 });
 project.addGitIgnore('cdk.out');
 project.synth();
