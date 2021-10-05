@@ -1,5 +1,4 @@
 [![npm version](https://badge.fury.io/js/cdk-gh-aws-oidc-connect.svg)](https://badge.fury.io/js/cdk-gh-aws-oidc-connect)
-[![PyPI version](https://badge.fury.io/py/cdk-gh-aws-oidc-connect.svg)](https://badge.fury.io/py/cdk-gh-aws-oidc-connect)
 [![release](https://github.com/askulkarni2/cdk-gh-aws-oidc-connect/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/askulkarni2/cdk-gh-aws-oidc-connect/actions/workflows/release.yml)
 [![CodeQL](https://github.com/askulkarni2/cdk-gh-aws-oidc-connect/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/askulkarni2/cdk-gh-aws-oidc-connect/actions/workflows/codeql-analysis.yml)
 
