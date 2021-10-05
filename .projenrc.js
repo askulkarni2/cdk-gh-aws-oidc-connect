@@ -6,6 +6,7 @@ const project = new AwsCdkConstructLibrary({
   author: 'Apoorva Kulkarni',
   authorAddress: 'askulkarni2@gmail.com',
   cdkVersion: '1.125.0',
+  keywords: ['aws-cdk', 'oidc', 'github', 'aws'],
   defaultReleaseBranch: 'main',
   name: 'cdk-gh-aws-oidc-connect',
   repositoryUrl: 'https://github.com/askulkarni2/cdk-gh-aws-oidc-connect.git',

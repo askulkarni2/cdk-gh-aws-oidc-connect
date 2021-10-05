@@ -70,7 +70,11 @@
   },
   "bundledDependencies": [],
   "keywords": [
-    "cdk"
+    "aws",
+    "aws-cdk",
+    "cdk",
+    "github",
+    "oidc"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
