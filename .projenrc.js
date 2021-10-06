@@ -35,7 +35,6 @@ that can be assumed by github-actions.`,
   autoDetectBin: false,
   autoApproveOptions: {
     secret: 'GITHUB_TOKEN',
-    allowedUsernames: ['askulkarni2'],
   },
   autoApproveUpgrades: true,
   autoApproveProjenUpgrades: true,
