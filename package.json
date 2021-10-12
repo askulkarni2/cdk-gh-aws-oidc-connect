@@ -72,6 +72,7 @@
   "keywords": [
     "aws",
     "aws-cdk",
+    "awscdk",
     "cdk",
     "github",
     "oidc"
