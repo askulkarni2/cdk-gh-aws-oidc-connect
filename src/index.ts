@@ -31,14 +31,10 @@ export interface GitHubActionsAwsOidcConnectProps {
   readonly managedPolicies?: Array<iam.IManagedPolicy>;
 
   /**
-   * Only allows sessions with this name to assume the role.
-   *
-   * This can be used to e.g. restrict that only certain GitHub workflows will be able to assume the role
-   * by setting `
-   *
-   * @default - allow all sessions to assume this role.
+   * External IDs required in order to assume the role.
+   * @default - not limited to specific external IDs.
    */
-  readonly requiredSessionName?: string;
+  readonly externalIds?: string[];
 }
 
 export class GitHubActionsAwsOidcConnect extends cdk.Construct {
@@ -56,8 +52,8 @@ export class GitHubActionsAwsOidcConnect extends cdk.Construct {
       provider: provider,
       managedPolicies: props.managedPolicies,
       repository: props.repo,
-      requiredSessionName: props.requiredSessionName,
       roleName: props.roleName,
+      externalIds: props.externalIds,
     });
 
     // Attach any other inline policies provided

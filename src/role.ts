@@ -135,16 +135,6 @@ export interface GitHubActionsRoleProps {
     * @stability stable
     */
   readonly description?: string;
-
-  /**
-   * Only allows sessions with this name to assume the role.
-   *
-   * This can be used to e.g. restrict that only certain GitHub workflows will be able to assume the role
-   * by setting `
-   *
-   * @default - allow all sessions to assume this role.
-   */
-  readonly requiredSessionName?: string;
 }
 
 /**
@@ -163,15 +153,14 @@ export class GitHubActionsRole extends iam.Role {
     const providerArn = props.provider.providerArn;
 
     // grant only requests coming from a specific GitHub repository.
-    const conditions: Record<string, string> = {};
-    conditions[`${GitHubActionsOidcProvider.DOMAIN}:sub`] = `repo:${org}/${repo}:*`;
-
-    if (props.requiredSessionName) {
-      conditions['sts:RoleSessionName'] = props.requiredSessionName;
-    }
+    const conditions: iam.Conditions = {
+      StringLike: {
+        [`${GitHubActionsOidcProvider.DOMAIN}:sub`]: `repo:${org}/${repo}:*`,
+      },
+    };
 
     super(scope, id, {
-      assumedBy: new iam.WebIdentityPrincipal(providerArn, { StringLike: conditions }),
+      assumedBy: new iam.WebIdentityPrincipal(providerArn, conditions),
       description: props.description,
       externalIds: props.externalIds,
       inlinePolicies: props.inlinePolicies,

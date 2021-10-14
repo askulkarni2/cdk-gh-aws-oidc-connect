@@ -12,7 +12,10 @@ export interface IGitHubActionsOidcProvider {
 }
 
 /**
- * Defines an OIDC provider for GitHub workflows. This provider can be
+ * Defines an OIDC provider for GitHub workflows.
+ *
+ * Please note that only a single instance of this provider can be installed in
+ * an AWS account.
  */
 export class GitHubActionsOidcProvider extends Construct implements IGitHubActionsOidcProvider {
   /**

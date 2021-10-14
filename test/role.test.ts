@@ -37,7 +37,7 @@ test('policies can be attached', () => {
   expect(template.toJSON()).toMatchSnapshot();
 });
 
-test('"requiredSessionName" can be used to allow only specific sessions to assume the role', () => {
+test('"externalIds" can be used to allow only specific sessions to assume the role', () => {
   // GIVEN
   const stack = new Stack();
 
@@ -45,22 +45,24 @@ test('"requiredSessionName" can be used to allow only specific sessions to assum
   new GitHubActionsRole(stack, 'GitHubRole', {
     provider: GitHubActionsOidcProvider.forAccount(),
     repository: 'foo/bar',
-    requiredSessionName: 'bombombombom',
+    externalIds: ['bombombombom'],
   });
 
   const template = Template.fromStack(stack);
   expect(template.hasResourceProperties('AWS::IAM::Role', {
     AssumeRolePolicyDocument: {
-      Statement: Match.arrayWith([ 
+      Statement: Match.arrayWith([
         Match.objectLike({
           Condition: {
             StringLike: {
               'token.actions.githubusercontent.com:sub': 'repo:foo/bar:*',
-              'sts:RoleSessionName': 'bombombombom',
-            }
+            },
+            StringEquals: {
+              'sts:ExternalId': 'bombombombom',
+            },
           },
-        })
-      ])
-    }
+        }),
+      ]),
+    },
   }));
 });

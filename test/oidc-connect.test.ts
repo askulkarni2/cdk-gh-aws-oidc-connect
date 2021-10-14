@@ -11,7 +11,6 @@ test('oidcConnect creates a role', () => {
   });
 
 
-
   expect(Template.fromStack(stack).toJSON()).toMatchSnapshot();
 });
 
@@ -45,7 +44,7 @@ test('oidcConnect role is granted access to an ECR repo', () => {
     repo: 'askulkarni2/cdk-gh-aws-oidc-connect',
   });
   const ecrRepo = new ecr.Repository(stack,
-'test-repo');
+    'test-repo');
 
   ecrRepo.grantPullPush(oidcProvider.roleToAssume);
   expect(Template.fromStack(stack).toJSON()).toMatchSnapshot();
@@ -56,7 +55,7 @@ test('allows specifying role name', () => {
 
   new oidcConnect.GitHubActionsAwsOidcConnect(stack, 'oidc-connect', {
     repo: 'askulkarni2/cdk-gh-aws-oidc-connect',
-    roleName: 'my-role-name'
+    roleName: 'my-role-name',
   });
 
   const template = Template.fromStack(stack);
@@ -65,27 +64,29 @@ test('allows specifying role name', () => {
   }));
 });
 
-test('allows specifying session name condition', () => {
+test('allows specifying external-id condition', () => {
   const stack = new Stack();
 
   new oidcConnect.GitHubActionsAwsOidcConnect(stack, 'oidc-connect', {
     repo: 'askulkarni2/cdk-gh-aws-oidc-connect',
-    requiredSessionName: 'foooom',
+    externalIds: ['fooom'],
   });
 
   const template = Template.fromStack(stack);
   expect(template.hasResourceProperties('AWS::IAM::Role', {
     AssumeRolePolicyDocument: {
-      Statement: Match.arrayWith([ 
+      Statement: Match.arrayWith([
         Match.objectLike({
           Condition: {
             StringLike: {
-              'token.actions.githubusercontent.com:sub': 'repo:foo/bar:*',
-              'sts:RoleSessionName': 'bombombombom',
-            }
+              'token.actions.githubusercontent.com:sub': 'repo:askulkarni2/cdk-gh-aws-oidc-connect:*',
+            },
+            StringEquals: {
+              'sts:ExternalId': 'fooom',
+            },
           },
-        })
-      ])
-    }
+        }),
+      ]),
+    },
   }));
 });

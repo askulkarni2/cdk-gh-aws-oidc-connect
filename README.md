@@ -56,7 +56,7 @@ const barRole = new GitHubRole(this, 'GitHubFooBarRole', {
   provider: provider,
   repository: 'foo/bar',
   roleName: 'FooBarGitHubRole',
-  requiredSessionName: 'Pa$$w0rd', // <-- this can be used to further restrict who can assume the role
+  externalIds: ['Pa$$w0rd'], // <-- this can be used to further restrict who can assume the role
 });
 
 const gooRole = new GitHubRole(this, 'GitHubFooGooRole', {
@@ -76,8 +76,8 @@ To assume this role from a GitHub Workflow, add the
 [aws-actions/configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials)
 GitHub action step to your workflow. You can explicitly specify the role name
 under `role-to-assume` or store the role inside a GitHub secret as the example
-below shows. Additionally, you can specify a `role-session-name` and specify
-`requiredSessionName` when you define the role to ensure that only specific
+below shows. Additionally, you can specify a `role-external-id` and specify
+`externalIds` when you define the role to ensure that only specific
 workflows in your repository can assume this role.
 
 ```yaml
@@ -85,7 +85,7 @@ workflows in your repository can assume this role.
       uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af
       with:
         role-to-assume: GitHubFooGooRole      # <-- required
-        role-session-name: ${{ secrets.ROLE_SESSION_KEY }} # <-- optional (put in a secret!)
+        role-external-id: ${{ secrets.ROLE_EXTERNAL_ID }} # <-- optional (put in a secret!)
         aws-region: us-west-2
 ```
 
@@ -108,7 +108,7 @@ const stack = new cdk.Stack(app, 'GitHubOidcStack');
 // Create OIDC Connect Provider
 const oidcProvider = new GitHubActionsAwsOidcConnect(stack, 'GitHubOidcConnect', {
   repos: ['askulkarni2/cdk-gh-aws-oidc-connect'],
-  requiredSessionName: 'Pa$$w0rd',
+  externalIds: ['Pa$$w0rd'],
 });
 
 // Create an ECR Repo
@@ -142,7 +142,7 @@ GitHubOidcStack.roletoassume = arn:aws:iam::XXXXXXXXX:role/GitHubOidcStack-iamro
 Store the following secrets in your GitHub repository:
 
 * `ROLE_TO_ASSUME`: `arn:aws:iam::XXXXXXXXX:role/GitHubOidcStack-iamroletoassume09F64513-3MUV87WTCIUU`
-* `ROLE_SESSION_KEY`: `Pa$$w0rd`
+* `ROLE_EXTERNAL_ID`: `Pa$$w0rd`
 
 Create a GitHub workflow:
 
@@ -170,7 +170,7 @@ jobs:
       uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af
       with:
         role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}      # <-- required
-        role-session-name: ${{ secrets.ROLE_SESSION_KEY }} # <-- optional
+        role-external-id: ${{ secrets.ROLE_EXTERNAL_ID }} # <-- optional
         aws-region: us-west-2
 
     - name: Login to Amazon ECR
