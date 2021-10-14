@@ -15,6 +15,7 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-iam',
   ],
   cdkTestDependencies: [
+    '@aws-cdk/assertions',
     '@aws-cdk/aws-ecr',
     '@aws-cdk/aws-s3',
   ],
@@ -49,5 +50,6 @@ that can be assumed by github-actions.`,
     '*By submitting this pull request, I confirm that my contribution is made under the terms of the Apache-2.0 license*',
   ],
 });
+project.deps.removeDependency('@aws-cdk/assert'); // <-- being deprecated
 project.addGitIgnore('cdk.out');
 project.synth();

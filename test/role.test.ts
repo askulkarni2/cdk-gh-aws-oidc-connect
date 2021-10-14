@@ -1,4 +1,4 @@
-import { SynthUtils } from '@aws-cdk/assert';
+import { Match, Template } from '@aws-cdk/assertions';
 import * as s3 from '@aws-cdk/aws-s3';
 import { Stack } from '@aws-cdk/core';
 import { GitHubActionsOidcProvider, GitHubActionsRole } from '../src';
@@ -15,7 +15,8 @@ test('snapshot', () => {
   });
 
   // THEN
-  expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();
+  const template = Template.fromStack(stack);
+  expect(template.toJSON()).toMatchSnapshot();
 });
 
 test('policies can be attached', () => {
@@ -32,5 +33,34 @@ test('policies can be attached', () => {
   bucket.grantRead(role);
 
   // THEN
-  expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();
+  const template = Template.fromStack(stack);
+  expect(template.toJSON()).toMatchSnapshot();
+});
+
+test('"requiredSessionName" can be used to allow only specific sessions to assume the role', () => {
+  // GIVEN
+  const stack = new Stack();
+
+  // WHEN
+  new GitHubActionsRole(stack, 'GitHubRole', {
+    provider: GitHubActionsOidcProvider.forAccount(),
+    repository: 'foo/bar',
+    requiredSessionName: 'bombombombom',
+  });
+
+  const template = Template.fromStack(stack);
+  expect(template.hasResourceProperties('AWS::IAM::Role', {
+    AssumeRolePolicyDocument: {
+      Statement: Match.arrayWith([ 
+        Match.objectLike({
+          Condition: {
+            StringLike: {
+              'token.actions.githubusercontent.com:sub': 'repo:foo/bar:*',
+              'sts:RoleSessionName': 'bombombombom',
+            }
+          },
+        })
+      ])
+    }
+  }));
 });

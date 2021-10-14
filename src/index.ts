@@ -14,6 +14,13 @@ export interface GitHubActionsAwsOidcConnectProps {
   readonly repo: string;
 
   /**
+   * The name of the IAM role to create.
+   *
+   * @default - generated
+   */
+  readonly roleName?: string;
+
+  /**
    * A list of IAM policies.
    */
   readonly policies?: Array<iam.Policy>;
@@ -22,6 +29,16 @@ export interface GitHubActionsAwsOidcConnectProps {
    * A list of Managed IAM policies.
    */
   readonly managedPolicies?: Array<iam.IManagedPolicy>;
+
+  /**
+   * Only allows sessions with this name to assume the role.
+   *
+   * This can be used to e.g. restrict that only certain GitHub workflows will be able to assume the role
+   * by setting `
+   *
+   * @default - allow all sessions to assume this role.
+   */
+  readonly requiredSessionName?: string;
 }
 
 export class GitHubActionsAwsOidcConnect extends cdk.Construct {
@@ -39,6 +56,8 @@ export class GitHubActionsAwsOidcConnect extends cdk.Construct {
       provider: provider,
       managedPolicies: props.managedPolicies,
       repository: props.repo,
+      requiredSessionName: props.requiredSessionName,
+      roleName: props.roleName,
     });
 
     // Attach any other inline policies provided
