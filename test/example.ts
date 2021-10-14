@@ -2,7 +2,7 @@
 
 import { Repository } from '@aws-cdk/aws-ecr';
 import * as cdk from '@aws-cdk/core';
-import { GitHubActionsAwsOidcConnect } from '../';
+import { GitHubActionsAwsOidcConnect } from '../src';
 
 const app = new cdk.App();
 

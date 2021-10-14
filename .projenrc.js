@@ -13,10 +13,10 @@ const project = new AwsCdkConstructLibrary({
   cdkDependencies: [
     '@aws-cdk/core',
     '@aws-cdk/aws-iam',
-    '@aws-cdk/aws-ecr',
   ],
   cdkTestDependencies: [
     '@aws-cdk/aws-ecr',
+    '@aws-cdk/aws-s3',
   ],
   description: `
 This construct is based on Aidan Steele\'s blog \

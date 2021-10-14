@@ -11,6 +11,11 @@
       "type": "build"
     },
     {
+      "name": "@aws-cdk/aws-s3",
+      "version": "^1.125.0",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -95,11 +100,6 @@
       "type": "build"
     },
     {
-      "name": "@aws-cdk/aws-ecr",
-      "version": "^1.125.0",
-      "type": "peer"
-    },
-    {
       "name": "@aws-cdk/aws-iam",
       "version": "^1.125.0",
       "type": "peer"
@@ -113,11 +113,6 @@
       "name": "constructs",
       "version": "^3.2.27",
       "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-ecr",
-      "version": "^1.125.0",
-      "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-iam",
