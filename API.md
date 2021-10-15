@@ -53,7 +53,8 @@ This is the role GitHub Actions can assume for the repos provided.
 
 Defines an OIDC provider for GitHub workflows.
 
-This provider can be
+Please note that only a single instance of this provider can be installed in
+an AWS account.
 
 #### Initializers <a name="cdk-gh-aws-oidc-connect.GitHubActionsOidcProvider.Initializer"></a>
 
@@ -193,6 +194,19 @@ E.g. aidansteele/aws-federation-github-actions
 
 ---
 
+##### `externalIds`<sup>Optional</sup> <a name="cdk-gh-aws-oidc-connect.GitHubActionsAwsOidcConnectProps.property.externalIds"></a>
+
+```typescript
+public readonly externalIds: string[];
+```
+
+- *Type:* `string`[]
+- *Default:* not limited to specific external IDs.
+
+External IDs required in order to assume the role.
+
+---
+
 ##### `managedPolicies`<sup>Optional</sup> <a name="cdk-gh-aws-oidc-connect.GitHubActionsAwsOidcConnectProps.property.managedPolicies"></a>
 
 ```typescript
@@ -214,22 +228,6 @@ public readonly policies: Policy[];
 - *Type:* [`@aws-cdk/aws-iam.Policy`](#@aws-cdk/aws-iam.Policy)[]
 
 A list of IAM policies.
-
----
-
-##### `requiredSessionName`<sup>Optional</sup> <a name="cdk-gh-aws-oidc-connect.GitHubActionsAwsOidcConnectProps.property.requiredSessionName"></a>
-
-```typescript
-public readonly requiredSessionName: string;
-```
-
-- *Type:* `string`
-- *Default:* allow all sessions to assume this role.
-
-Only allows sessions with this name to assume the role.
-
-This can be used to e.g. restrict that only certain GitHub workflows will be able to assume the role
-by setting `
 
 ---
 
@@ -414,22 +412,6 @@ the actions that are allowed by both its identity-based policies and its
 permissions boundaries.
 
 > [https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
-
----
-
-##### `requiredSessionName`<sup>Optional</sup> <a name="cdk-gh-aws-oidc-connect.GitHubActionsRoleProps.property.requiredSessionName"></a>
-
-```typescript
-public readonly requiredSessionName: string;
-```
-
-- *Type:* `string`
-- *Default:* allow all sessions to assume this role.
-
-Only allows sessions with this name to assume the role.
-
-This can be used to e.g. restrict that only certain GitHub workflows will be able to assume the role
-by setting `
 
 ---
 
