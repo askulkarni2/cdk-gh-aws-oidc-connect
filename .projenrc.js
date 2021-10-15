@@ -13,10 +13,11 @@ const project = new AwsCdkConstructLibrary({
   cdkDependencies: [
     '@aws-cdk/core',
     '@aws-cdk/aws-iam',
-    '@aws-cdk/aws-ecr',
   ],
   cdkTestDependencies: [
+    '@aws-cdk/assertions',
     '@aws-cdk/aws-ecr',
+    '@aws-cdk/aws-s3',
   ],
   description: `
 This construct is based on Aidan Steele\'s blog \
@@ -49,5 +50,6 @@ that can be assumed by github-actions.`,
     '*By submitting this pull request, I confirm that my contribution is made under the terms of the Apache-2.0 license*',
   ],
 });
+project.deps.removeDependency('@aws-cdk/assert'); // <-- being deprecated
 project.addGitIgnore('cdk.out');
 project.synth();

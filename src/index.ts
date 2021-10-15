@@ -1,5 +1,10 @@
 import * as iam from '@aws-cdk/aws-iam';
 import * as cdk from '@aws-cdk/core';
+import { GitHubActionsOidcProvider } from './provider';
+import { GitHubActionsRole } from './role';
+
+export * from './provider';
+export * from './role';
 
 export interface GitHubActionsAwsOidcConnectProps {
   /**
@@ -7,6 +12,13 @@ export interface GitHubActionsAwsOidcConnectProps {
    * E.g. aidansteele/aws-federation-github-actions
    */
   readonly repo: string;
+
+  /**
+   * The name of the IAM role to create.
+   *
+   * @default - generated
+   */
+  readonly roleName?: string;
 
   /**
    * A list of IAM policies.
@@ -17,10 +29,15 @@ export interface GitHubActionsAwsOidcConnectProps {
    * A list of Managed IAM policies.
    */
   readonly managedPolicies?: Array<iam.IManagedPolicy>;
+
+  /**
+   * External IDs required in order to assume the role.
+   * @default - not limited to specific external IDs.
+   */
+  readonly externalIds?: string[];
 }
 
 export class GitHubActionsAwsOidcConnect extends cdk.Construct {
-
   /**
    * This is the role GitHub Actions can assume for the repos provided.
    */
@@ -29,25 +46,14 @@ export class GitHubActionsAwsOidcConnect extends cdk.Construct {
   constructor(scope: cdk.Construct, id: string, props: GitHubActionsAwsOidcConnectProps) {
     super(scope, id);
 
-    const repo = props.repo;
-    // TODO: validate repos
+    const provider = new GitHubActionsOidcProvider(this, 'Provider');
 
-    // Create an OIDC Provider for GitHub Actions
-    const githubOidcProvider = new iam.OpenIdConnectProvider(scope, 'github-oidc-provider', {
-      url: 'https://vstoken.actions.githubusercontent.com',
-      //clientIds: repos.map((repo) => { return `https://github.com/${repo}`; }),
-      clientIds: ['sigstore'],
-      thumbprints: ['a031c46782e6e6c662c2c87c76da9aa62ccabd8e'],
-    });
-
-    // Create an IAM role with policies provided.
-    this.roleToAssume = new iam.Role(scope, 'iam-role-to-assume', {
+    this.roleToAssume = new GitHubActionsRole(this, 'iam-role-to-assume', {
+      provider: provider,
       managedPolicies: props.managedPolicies,
-      assumedBy: new iam.OpenIdConnectPrincipal(githubOidcProvider, {
-        'ForAnyValue:StringEquals': {
-          'vstoken.actions.githubusercontent.com:sub': repo,
-        },
-      }),
+      repository: props.repo,
+      roleName: props.roleName,
+      externalIds: props.externalIds,
     });
 
     // Attach any other inline policies provided

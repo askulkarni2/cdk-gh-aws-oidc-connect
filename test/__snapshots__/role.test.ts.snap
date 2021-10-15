@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`policies can be attached 1`] = `
+Object {
+  "Resources": Object {
+    "Bucket83908E77": Object {
+      "DeletionPolicy": "Retain",
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "GitHubRoleDefaultPolicy12084BFC": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "Bucket83908E77",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "Bucket83908E77",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "GitHubRoleDefaultPolicy12084BFC",
+        "Roles": Array [
+          Object {
+            "Ref": "GitHubRoleECD51173",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "GitHubRoleECD51173": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRoleWithWebIdentity",
+              "Condition": Object {
+                "StringLike": Object {
+                  "token.actions.githubusercontent.com:sub": "repo:foo/bar:*",
+                },
+              },
+              "Effect": "Allow",
+              "Principal": Object {
+                "Federated": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "arn:aws:iam::",
+                      Object {
+                        "Ref": "AWS::AccountId",
+                      },
+                      ":oidc-provider/token.actions.githubusercontent.com",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "RoleName": "FooBarGitHubRole",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+  },
+}
+`;
+
+exports[`snapshot 1`] = `
+Object {
+  "Resources": Object {
+    "GitHubOidcProviderGithubOidcProvider": Object {
+      "Properties": Object {
+        "ClientIdList": Array [
+          "sigstore",
+        ],
+        "ThumbprintList": Array [
+          "a031c46782e6e6c662c2c87c76da9aa62ccabd8e",
+        ],
+        "Url": "https://token.actions.githubusercontent.com",
+      },
+      "Type": "AWS::IAM::OIDCProvider",
+    },
+    "GitHubRoleECD51173": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRoleWithWebIdentity",
+              "Condition": Object {
+                "StringLike": Object {
+                  "token.actions.githubusercontent.com:sub": "repo:foo/bar:*",
+                },
+              },
+              "Effect": "Allow",
+              "Principal": Object {
+                "Federated": Object {
+                  "Fn::GetAtt": Array [
+                    "GitHubOidcProviderGithubOidcProvider",
+                    "Arn",
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+  },
+}
+`;
