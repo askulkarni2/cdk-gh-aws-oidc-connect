@@ -12,6 +12,19 @@ export interface IGitHubActionsOidcProvider {
 }
 
 /**
+ * Props for `GitHubActionsOidcProvider`.
+ */
+export interface GitHubActionsOidcProviderProps {
+  /**
+   * The client ID of the GitHub OIDC provider.
+   *
+   * @default - ['sigstore']
+   * @stability stable
+   */
+  readonly clientIdList?: string[];
+}
+
+/**
  * Defines an OIDC provider for GitHub workflows.
  *
  * Please note that only a single instance of this provider can be installed in
@@ -45,13 +58,13 @@ export class GitHubActionsOidcProvider extends Construct implements IGitHubActio
    */
   public readonly providerArn: string;
 
-  constructor(scope: Construct, id: string) {
+  constructor(scope: Construct, id: string, props?: GitHubActionsOidcProviderProps) {
     super(scope, id);
 
     const provider = new iam.CfnOIDCProvider(scope, `${id}.GithubOidcProvider`, {
       url: `https://${GitHubActionsOidcProvider.DOMAIN}`,
       thumbprintList: [GitHubActionsOidcProvider.THUMBPRINT],
-      clientIdList: ['sigstore'],
+      clientIdList: props?.clientIdList || ['sigstore'],
     });
 
     this.providerArn = provider.attrArn;

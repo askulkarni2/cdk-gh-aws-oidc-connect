@@ -61,7 +61,7 @@ an AWS account.
 ```typescript
 import { GitHubActionsOidcProvider } from 'cdk-gh-aws-oidc-connect'
 
-new GitHubActionsOidcProvider(scope: Construct, id: string)
+new GitHubActionsOidcProvider(scope: Construct, id: string, props?: GitHubActionsOidcProviderProps)
 ```
 
 ##### `scope`<sup>Required</sup> <a name="cdk-gh-aws-oidc-connect.GitHubActionsOidcProvider.parameter.scope"></a>
@@ -73,6 +73,12 @@ new GitHubActionsOidcProvider(scope: Construct, id: string)
 ##### `id`<sup>Required</sup> <a name="cdk-gh-aws-oidc-connect.GitHubActionsOidcProvider.parameter.id"></a>
 
 - *Type:* `string`
+
+---
+
+##### `props`<sup>Optional</sup> <a name="cdk-gh-aws-oidc-connect.GitHubActionsOidcProvider.parameter.props"></a>
+
+- *Type:* [`cdk-gh-aws-oidc-connect.GitHubActionsOidcProviderProps`](#cdk-gh-aws-oidc-connect.GitHubActionsOidcProviderProps)
 
 ---
 
@@ -241,6 +247,31 @@ public readonly roleName: string;
 - *Default:* generated
 
 The name of the IAM role to create.
+
+---
+
+### GitHubActionsOidcProviderProps <a name="cdk-gh-aws-oidc-connect.GitHubActionsOidcProviderProps"></a>
+
+Props for `GitHubActionsOidcProvider`.
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { GitHubActionsOidcProviderProps } from 'cdk-gh-aws-oidc-connect'
+
+const gitHubActionsOidcProviderProps: GitHubActionsOidcProviderProps = { ... }
+```
+
+##### `clientIdList`<sup>Optional</sup> <a name="cdk-gh-aws-oidc-connect.GitHubActionsOidcProviderProps.property.clientIdList"></a>
+
+```typescript
+public readonly clientIdList: string[];
+```
+
+- *Type:* `string`[]
+- *Default:* ['sigstore']
+
+The client ID of the GitHub OIDC provider.
 
 ---
 
