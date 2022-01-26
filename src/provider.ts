@@ -26,7 +26,7 @@ export class GitHubActionsOidcProvider extends Construct implements IGitHubActio
   /**
    * The OIDC domain thumbprint for GitHub.
    */
-  public static readonly THUMBPRINT = 'a031c46782e6e6c662c2c87c76da9aa62ccabd8e';
+  public static readonly THUMBPRINT = '6938fd4d98bab03faadb97b34396831e3780aea1';
 
   /**
    * @param account The AWS account for which you want to obtain the OIDC
